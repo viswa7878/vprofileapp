@@ -1,3 +1,5 @@
+@Library('vprofileapp') _
+
 pipeline {
     agent any
 
@@ -16,7 +18,13 @@ pipeline {
         stage('fetch code') {
             steps {
                 git branch: 'main', url: 'https://github.com/viswa7878/vprofileapp.git'
+				  script {
+                def dcStatus = Acidupload(
+                    remote: "nkn",
+                    dc_root_dir: "mkmn"
+                )
 
+                }
             }
         }
     }
