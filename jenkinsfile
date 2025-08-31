@@ -1,10 +1,22 @@
 pipeline {
     agent any
 
+  parameters {
+	booleanParam(
+            description: '''
+                If selected, the job will not execute any DC generated Deploy scripts.<br/>
+				The job will still create/modify the environment in DC, it will just not execute the generated Deployment Scripts.
+                ''',
+            name: 'Perform_Dry_Run',
+            defaultValue: false
+        )
+  }
+
     stages {
         stage('fetch code') {
             steps {
-                sh 'echo "Fetching code from repository"'
+                git branch: 'main', url: 'https://github.com/viswa7878/vprofileapp.git'
+
             }
         }
     }
