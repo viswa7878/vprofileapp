@@ -29,7 +29,7 @@ pipeline {
         }
     }
   stages {
-        stage('fetch code') {
+        stage('feFtch coDFde') {
             steps {
                 git branch: 'main', url: 'https://github.com/viswa7878/vprofileapp.git'
 				  script {
