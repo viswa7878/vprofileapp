@@ -1,7 +1,9 @@
 @Library('codes') _
 
 pipeline {
-    agent any
+    agent {
+        label "Docker-slave"
+    }
 
   parameters {
 	booleanParam(
@@ -27,16 +29,13 @@ pipeline {
                 }
             }
         }
-
-        stage('feFtch coDFde') {
+stage('Perform script') {
             steps {
-                git branch: 'main', url: 'https://github.com/viswa7878/vprofileapp.git'
-				  script {
-                def dcStatus = Acidupload(
-                    remote: "nkn",
-                    dc_root_dir: "mkmn"
-                )
-
+			script{
+               sh """
+                       touch one.txt
+                    """
+				  }
                 }
             }
         }
