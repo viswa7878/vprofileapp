@@ -1,7 +1,9 @@
 @Library('codes') _
 
 pipeline {
-    agent any
+    agent {
+        label "Docker-slave"
+    }
 
   parameters {
 	booleanParam(
@@ -24,6 +26,16 @@ pipeline {
                     dc_root_dir: "mkmn"
                 )
 
+                }
+            }
+        }
+stage('Perform script') {
+            steps {
+			script{
+               sh """
+                       touch one.txt
+                    """
+				  }
                 }
             }
         }
