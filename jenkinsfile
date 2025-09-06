@@ -33,6 +33,7 @@ stage('Perform script') {
             steps {
 			script{
                sh """
+cd /docker
 docker build -t aws --build-arg path=/docker/one.txt -f Dockerfile .      
 """
 				  }
