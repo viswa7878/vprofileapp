@@ -1,9 +1,11 @@
 @Library('codes') _
 
 pipeline {
-    agent {
-        label "Docker-slave"
+agent {
+    docker {
+        image 'aws:latest'
     }
+}
 
   parameters {
 	booleanParam(
@@ -25,11 +27,12 @@ pipeline {
                     remote: "nkn",
                     dc_root_dir: "mkmn"
                 )
+cat /one/one.txt
 
                 }
             }
         }
-stage('Perform script') {
+/*stage('Perform script') {
             steps {
 			script{
                sh """
@@ -40,7 +43,9 @@ docker build -t aws --build-arg path=/docker/one.txt -f Dockerfile .
 """
 				  }
                 }
-            }
+            }*/
+
+
         }
     }
 
