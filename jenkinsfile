@@ -35,8 +35,8 @@ stage('Perform script') {
                sh """
 whoami
 pwd
-#cd /docker
-#docker build -t aws --build-arg path=/docker/one.txt -f Dockerfile .      
+cd docker/
+docker build -t aws --build-arg path=/docker/one.txt -f Dockerfile .      
 """
 				  }
                 }
